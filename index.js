@@ -1,3 +1,4 @@
+// edit button to be add
 const btnAdd = document.getElementById('btn-add');
 let count = 0;
 
@@ -19,7 +20,6 @@ btnAdd.addEventListener('click', function() {
     <td>${inputValue}</td>
     <td>
       <button class="btn btn-danger btn-delete">Delete</button>
-      <button class="btn btn-success btn-done">Done</button>
     </td> 
   `;
   taskContainer.appendChild(taskContent);
@@ -27,6 +27,12 @@ btnAdd.addEventListener('click', function() {
   // clearing input field
   inputTask.value = "";
 
+  // handling delete
   const btnDelete = document.getElementsByClassName('btn-delete');
-  const btnDone = document.getElementsByClassName('btn-done');
+  for (const del of btnDelete) {
+    del.addEventListener('click', function(e) {
+      e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
+      // console.log(e.target.parentNode.parentNode.parentNode);
+    })
+  }
 })
